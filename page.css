@@ -1,0 +1,39 @@
+.title{
+    font-family:Roboto, Times, serif;
+    font-size: 56px;
+    font-weight: 700;
+    margin-top:40px;
+    color:#75B79E;
+    margin-bottom:40px;
+}.game{
+    width:600px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height:350px;
+}.cards-4{
+    width:600px;
+}.cards-6{
+    width:800px;
+}.cards-8{
+    width:550px;
+}.cards-10{
+    width:700px;
+}.cards-12{
+    width:810px;
+}.cards-14{
+    width:935px;
+}.game img{
+    height: 100px;
+    width: 100px;
+}.card{
+    height: 146px;
+    width: 117px;
+    border-radius: 5px;
+    background-color: #99CEA8;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}.hidden{
+    display:none;
+}
