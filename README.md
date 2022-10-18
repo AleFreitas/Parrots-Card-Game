@@ -2,6 +2,6 @@
 *This is a simple* **memory game** *website made with:*\
 -**JavaScript**\
 -**HTML**\
--**CSS**\\
+-**CSS**\
 
 link: <https://alefreitas.github.io/Projeto_04_parrotsCardGame/>
