@@ -5,6 +5,7 @@
     margin-top:40px;
     color:#75B79E;
     margin-bottom:40px;
+    text-align: center;
 }.game{
     width:600px;
     display:flex;
@@ -36,4 +37,18 @@
     align-items: center;
 }.hidden{
     display:none;
+}/*smartphone responsiveness*/
+@media(max-width:600px){
+    .title{
+        width:312px;
+        font-size: 36px;
+    }.game{
+        width:120px;
+        flex-direction:column;
+        flex-wrap: nowrap;
+        height:100%;
+    }.card{
+        height: 146px;
+        margin-bottom: 34px;
+    }
 }
