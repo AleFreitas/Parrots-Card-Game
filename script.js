@@ -1,6 +1,7 @@
 /*prompt for card number */
 const par = [4,6,8,10,12,14]
 let cardNumber = 0;
+/*checking if cardNumber is a valid number */
 while (!(par.includes(cardNumber))){
     cardNumber = Number(prompt("insira o numero de cartas a serem utilizadas ( deve ser um par entre 4 e 14)"))
 }
@@ -22,13 +23,10 @@ for (let i = 1; i <= cardNumber / 2; i++) {
 }
 /*shuffling the cards*/
 cards.sort(comparador);
-console.log(cards)
 /*[1,3,2,2,1,3] */
 /*list with gifs in order */
 let gifList = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif",
     "metalparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif"]
-console.log(gifList)
-
 /*setting gifs on their respective cards*/
 for (let i = 1; i <= cardNumber; i++) {
     let gifPosition = cards[i - 1]
@@ -46,16 +44,21 @@ let alreadyChosen = []
 function comparador() {
     return Math.random() - 0.5;
 }
+/*toggles a chosen card, hiding or showing it */
 function toggleCard(card) {
+    /*query selector for selected card front and card back */
     let cardFront = document.querySelector(".card" + card + " > .card-front");
     let cardBack = document.querySelector(".card" + card + " > .card-back");
+    /*toggle card front and card back */
     cardFront.classList.toggle("hidden");
     cardBack.classList.toggle("hidden");
 }
+/*function made for toggling two cards at the same time*/
 function toggleBothCards(card1,card2){
     toggleCard(card1);
     toggleCard(card2);
 }
+/*onclick function for selecting a card */
 function selectCard(card) {
     if (!(alreadyChosen.includes(card))) {
         /*choosing the first card */
@@ -94,5 +97,4 @@ function selectCard(card) {
             }
         }
     }
-    console.log(moves)
 }
