@@ -48,6 +48,10 @@ function toggleCard(card) {
     cardFront.classList.toggle("hidden");
     cardBack.classList.toggle("hidden");
 }
+function toggleBothCards(card1,card2){
+    toggleCard(card1);
+    toggleCard(card2);
+}
 function selectCard(card) {
     if (!(alreadyChosen.includes(card))) {
         /*choosing the first card */
@@ -79,9 +83,8 @@ function selectCard(card) {
                 moves++
                 const card1 = card;
                 const card2 = selectedCards[0][0];
-                setTimeout(() => {
-                    toggleCard(card2);
-                    toggleCard(card1);
+                setTimeout(function(){
+                    toggleBothCards(card1,card2)
                 },1000)
                 selectedCards = [];
             }
