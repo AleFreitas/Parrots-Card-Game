@@ -74,9 +74,12 @@ function selectCard(card) {
                 }
             /*got it wrong*/
             } else {
-                console.log("deu ruim")
-                toggleCard(card);
-                toggleCard(selectedCards[0][0]);
+                const card1 = card;
+                const card2 = selectedCards[0][0];
+                setTimeout(() => {
+                    toggleCard(card2);
+                    toggleCard(card1);
+                },1000)
                 selectedCards = [];
             }
         }
