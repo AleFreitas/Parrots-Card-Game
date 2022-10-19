@@ -1,5 +1,9 @@
 /*prompt for card number */
-let cardNumber = prompt("insira o numero de cartas a serem utilizadas ( deve ser um par entre 4 e 14)")
+const par = [4,6,8,10,12,14]
+let cardNumber = 0;
+while (!(par.includes(cardNumber))){
+    cardNumber = Number(prompt("insira o numero de cartas a serem utilizadas ( deve ser um par entre 4 e 14)"))
+}
 /*number of right moves to win */
 let toWin = cardNumber / 2
 /*querySelector for game format based on cardNumber*/
