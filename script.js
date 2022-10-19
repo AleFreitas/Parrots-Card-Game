@@ -50,17 +50,20 @@ function toggleCard(card) {
 }
 function selectCard(card) {
     if (!(alreadyChosen.includes(card))) {
-        moves++;
-        /*showing selected card*/
-        toggleCard(card)
         /*choosing the first card */
         if (selectedCards.length === 0) {
+            /*showing selected card*/
+            toggleCard(card)
+            moves++;
             selectedCards.push([card, cards[card - 1]]);
         /*choosing the second card */
-        } else {
+        } else if (selectedCards[0][0] !== card){
+            /*showing selected card*/
+            toggleCard(card)
             /*got it right*/
             if (cards[card - 1] === selectedCards[0][1]) {
                 toWin -= 1;
+                moves++
                 alreadyChosen.push(card);
                 alreadyChosen.push(selectedCards[0][0]);
                 selectedCards = [];
@@ -70,10 +73,10 @@ function selectCard(card) {
                     if (reset === "sim"){
                         window.location.reload()
                     }
-
                 }
             /*got it wrong*/
             } else {
+                moves++
                 const card1 = card;
                 const card2 = selectedCards[0][0];
                 setTimeout(() => {
@@ -84,4 +87,5 @@ function selectCard(card) {
             }
         }
     }
+    console.log(moves)
 }
