@@ -18,27 +18,51 @@ for (let i = 1; i <= cardNumber / 2; i++) {
 }
 /*shuffling the cards*/
 cards.sort(comparador);
+console.log(cards)
 /*[1,3,2,2,1,3] */
 /*list with gifs in order */
 let gifList = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif",
     "metalparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif"]
 
 /*showing cards*/
-console.log(cards)
 const gameDiv = document.querySelector(".game")
 for (let i = 1; i <= cardNumber; i++) { 
     gameDiv.innerHTML+=`
-    <div class="card" onclick="selectCard(this)">
+    <div class="card" onclick="selectCard(this,${cards[i-1]})">
         <img src="media/back.png" alt="ParrotImg">
         <img src="media/${gifList[cards[i-1]-1]}" alt="ParrotGif">
     </div>
     `
-    console.log([i,cards[i-1]])
-    console.log(gifList[cards[i-1]-1])
 }
 function comparador() {
     return Math.random() - 0.5;
 }
-function selectCard(card){
-    card.classList.toggle("flip")
+
+let winnedCards = []
+let selectedCardGif = 0;
+let selectedCard = "";
+
+
+function selectCard(card, gif) {
+    /*checking if it is not an already winned card */
+    if (!(winnedCards.includes(card))) {
+        card.classList.toggle("flip");
+        /*primeira carta escolhida */
+        if(selectedCardGif === 0){
+            selectedCardGif = gif;
+            selectedCard = card;
+        }else{
+            /*got it right*/
+            if(selectedCardGif === gif){
+                winnedCards.push(card)
+                winnedCards.push(selectedCard)
+            /*got it wrong*/
+            }else{
+                card.classList.toggle("flip");
+                selectedCard.classList.toggle("flip");
+            }
+            selectedCard = ""
+            selectedCardGif = 0;
+        }
+    }
 }
