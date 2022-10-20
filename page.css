@@ -35,6 +35,15 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    transition:all 1s;
+}.card :nth-child(2){
+    display:none;
+}.flip{
+    transform: rotateY(180deg);
+}.flip :nth-child(1){
+    display:none;
+}.flip :nth-child(2){
+    display:block
 }.hidden{
     display:none;
 }/*smartphone responsiveness*/
