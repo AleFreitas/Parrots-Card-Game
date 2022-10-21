@@ -3,8 +3,7 @@ const par = [4,6,8,10,12,14]
 let cardNumber = 0;
 /*checking if cardNumber is a valid number */
 while (!(par.includes(cardNumber))){
-    cardNumber = Number(prompt(`insira o numero de cartas a serem 
-    utilizadas ( deve ser um par entre 4 e 14)`));
+    cardNumber = Number(prompt(`insira o numero de cartas a serem utilizadas ( deve ser um par entre 4 e 14)`));
 }
 /*number of right moves to win */
 let toWin = cardNumber / 2;
@@ -35,6 +34,15 @@ for (let i = 1; i <= cardNumber; i++) {
     </div>
     `;
 }
+/*Start clock */
+const clock = document.querySelector(".clock")
+let count = 0;
+const clockInterval = setInterval(function() {
+    count++;
+    clock.innerHTML = count
+}, 1000);
+
+/*function for scrambling cards */
 function comparador() {
     return Math.random() - 0.5;
 }
@@ -81,7 +89,8 @@ function selectCard(card, gif) {
         }
         /*game is over and user won */
         if(toWin === 0){
-            alert(`Você ganhou em ${moves} jogadas!`)
+            clearInterval(clockInterval);
+            alert(`Você ganhou em ${moves} jogadas com um tempo de exatamente ${count} segundos!`)
             reset = prompt("Você gostaria de reiniciar o jogo?");
             if (reset === "sim"){
                 window.location.reload()
