@@ -82,6 +82,10 @@ function selectCard(card, gif) {
         /*game is over and user won */
         if(toWin === 0){
             alert(`Você ganhou em ${moves} jogadas!`)
+            reset = prompt("Você gostaria de reiniciar o jogo?");
+            if (reset === "sim"){
+                window.location.reload()
+            }
         }
     }
 }
