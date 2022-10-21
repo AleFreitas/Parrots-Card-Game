@@ -50,6 +50,7 @@ function comparador() {
 function toggleBothCards(card1,card2){
     card1.classList.toggle("flip");
     card2.classList.toggle("flip");
+    stillFlipping = false;
 }
 /*cards that were chosen and were the same*/
 let winnedCards = []
@@ -58,42 +59,46 @@ let selectedCardGif = 0;
 let selectedCard = "";
 /*number of moves made throghout the game*/
 let moves = 0;
+let stillFlipping = false;
 
 function selectCard(card, gif) {
-    /*checking if it is not an already winned card */
-    if (!(winnedCards.includes(card))) {
-        card.classList.toggle("flip");
-        /*primeira carta escolhida */
-        if(selectedCardGif === 0){
-            moves++;
-            selectedCardGif = gif;
-            selectedCard = card;
-        }else{
-            /*got it right*/
-            if(selectedCardGif === gif){
+    if(!(stillFlipping)){
+        /*checking if it is not an already winned card */
+        if (!(winnedCards.includes(card))) {
+            card.classList.toggle("flip");
+            /*primeira carta escolhida */
+            if(selectedCardGif === 0){
                 moves++;
-                toWin-=1;
-                winnedCards.push(card);
-                winnedCards.push(selectedCard);
-            /*got it wrong*/
+                selectedCardGif = gif;
+                selectedCard = card;
             }else{
-                moves++;
-                const card1 = card;
-                const card2 = selectedCard;
-                setTimeout(function(){
-                    toggleBothCards(card1,card2)
-                },1000)
+                /*got it right*/
+                if(selectedCardGif === gif){
+                    moves++;
+                    toWin-=1;
+                    winnedCards.push(card);
+                    winnedCards.push(selectedCard);
+                /*got it wrong*/
+                }else{
+                    moves++;
+                    const card1 = card;
+                    const card2 = selectedCard;
+                    stillFlipping = true;
+                    setTimeout(function(){
+                        toggleBothCards(card1,card2)
+                    },1000)
+                }
+                selectedCard = "";
+                selectedCardGif = 0;
             }
-            selectedCard = "";
-            selectedCardGif = 0;
-        }
-        /*game is over and user won */
-        if(toWin === 0){
-            clearInterval(clockInterval);
-            alert(`Você ganhou em ${moves} jogadas com um tempo de exatamente ${count} segundos!`)
-            reset = prompt("Você gostaria de reiniciar o jogo?");
-            if (reset === "sim"){
-                window.location.reload()
+            /*game is over and user won */
+            if(toWin === 0){
+                clearInterval(clockInterval);
+                alert(`Você ganhou em ${moves} jogadas com um tempo de exatamente ${count} segundos!`)
+                reset = prompt("Você gostaria de reiniciar o jogo?");
+                if (reset === "sim"){
+                    window.location.reload()
+                }
             }
         }
     }
