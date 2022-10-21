@@ -75,7 +75,7 @@
         height: 146px;
         margin-bottom: 34px;
     }.clock{
-        top:0;
-        right:0;
+        top:80px;
+        right:20px;
     }
 }
