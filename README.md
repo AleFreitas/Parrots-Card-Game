@@ -9,4 +9,4 @@ this project implements 3d transitions, loops, querySelectors and functions.
 2. try to get the card pairs right
 3. have fun
 ## How to access
-link: <https://alefreitas.github.io/Projeto_04_parrotsCardGame/>
+follow this link: <https://alefreitas.github.io/Projeto_04_parrotsCardGame/>
